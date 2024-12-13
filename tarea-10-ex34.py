@@ -1,18 +1,23 @@
-nombres = ["Alejandro", "Gustavo", "Joan", "ana", "Carlos"]
-empieza = []
-letra = input("Cual es la primera letra del nombre que quieres: ").upper()
+palabra = input("Deme una palabra y te dare las vocales que tiene: ").lower()
+A = E = I = O = U = 0
 
-def comienzapor():
-    for nombre in nombres:
-        letranombre = nombre[0]
-        if letranombre.upper() == letra:
-            empieza.append(nombre)
-    if empieza == []:
-        print("Ninguno de los nombres empieza por '{}'".format(letra))
+def contarvocales():
+    global A, E, I, O, U
 
-comienzapor()
+    for letra in palabra:
+        match letra:
+            case "a":
+                A += 1
+            case "e":
+                E += 1
+            case "i":
+                I += 1
+            case "o":
+                O += 1
+            case "u":
+                U += 1
+    
+    print("Estas son las vocales encontradas en la palabra '{}':".format(palabra))
+    print("A: {}\nE: {}\nI: {}\nO: {}\nU: {}".format(A, E, I, O, U))
 
-if empieza != []:
-    print("\nLos nombres que empiezan por '{}' son:".format(letra))
-    for nombre in empieza:
-        print(nombre)
+contarvocales()

@@ -138,18 +138,16 @@ def juego():
         entrada = input("\nEscribe un numero de cuatro digitos: ")
 
         if len(entrada) == 4:
+            
+            if entrada == codigosecreto:
+                emojicod = " ".join([emoji[num] for num in codigosecreto])
+                print("¡Has ganado y adivinado el codigo '{}'! Tenias {} intento(s)".format(emojicod, intentos))
+                break
             if intentos > 1:
-                
-                if entrada != codigosecreto:
                     intentos -= 1
                     print("Tienes {} intentos restantes".format(intentos))
                     print("\nPistas:")
                     corregir(codigosecreto, entrada)
-
-                else:
-                    emojicod = " ".join([emoji[num] for num in codigosecreto])
-                    print("¡Has ganado y adivinado el codigo '{}'! Tenias {} intentos".format(emojicod, intentos))
-                    break
 
             else:
                 emojicod = " ".join([emoji[num] for num in codigosecreto])
@@ -178,5 +176,8 @@ while True:
     else:
         print("ACUERDATE: Tendras {} intentos y habran numeros repetidos".format(intentos))
     print("")
-
     juego()
+
+    facil = False
+    medio = False
+    dificil = False
